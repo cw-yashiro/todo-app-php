@@ -21,7 +21,7 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: todo_app
       MYSQL_USER: db-user
       MYSQL_PASSWORD: db-pass
       TZ: 'Asia/Tokyo'
