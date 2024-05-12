@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function getAllTasks() {
-        // logic to get all task goes here
+    public function getAllTodos() {
+        // logic to get all todos goes here
     }
     
-    public function createTask(Request $request) {
-        // logic to create a task record goes here
+    public function createTodo(Request $request) {
+        // logic to create a todo record goes here
     }
     
-    public function updateTask(Request $request, $id) {
-        // logic to update a task record goes here
+    public function updateTodo(Request $request, $id) {
+        // logic to update a todo record goes here
     }
     
-    public function deleteTask ($id) {
-        // logic to delete a task record goes here
+    public function deleteTodo($id) {
+        // logic to delete a todo record goes here
     }
 }

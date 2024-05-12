@@ -18,18 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/todo', function() {
-    return response('GET /');
-});
+Route::get('/todo', 'ApiController@getAllTodos');
 
-Route::post('/todo', function() {
-    return response('post /todo');
-});
+Route::post('/todo', 'ApiController@createTodo');
 
-Route::put('/todo', function() {
-    return response('update /todo');
-});
+Route::put('/todo/{id}', 'ApiController@updateTodo');
 
-Route::delete('/todo', function() {
-    return response('delete /todo');
-});
+Route::delete('/todo/{id}', 'ApiController@deleteTodo');
