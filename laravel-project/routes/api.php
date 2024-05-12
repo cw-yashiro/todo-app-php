@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TodoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,10 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/todo', 'ApiController@getAllTodos');
-
-Route::post('/todo', 'ApiController@createTodo');
-
-Route::put('/todo/{id}', 'ApiController@updateTodo');
-
-Route::delete('/todo/{id}', 'ApiController@deleteTodo');
+Route::apiResource('/todos', TodoController::class);
