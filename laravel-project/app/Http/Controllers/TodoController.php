@@ -36,7 +36,6 @@ class TodoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        logger($request);
         $update = [
             'name' => $request->name,
             'is_done' => $request->is_done
