@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', function() {
+    return response('GET /');
+});
+
+Route::post('/todo', function() {
+    return response('post /todo');
+});
+
+Route::put('/todo', function() {
+    return response('update /todo');
+});
+
+Route::delete('/todo', function() {
+    return response('delete /todo');
+});
