@@ -14,7 +14,7 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /var/www
     depends_on:
-    - app
+      - app
   db:
     platform: linux/x86_64
     image: mysql:5.7
