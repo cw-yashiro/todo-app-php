@@ -1,13 +1,13 @@
-interface ButtonProps {
-	variant: 'primary' | 'secondary' | 'danger',
-	label: string,
-	onClick: () => void
-}
+import { forwardRef } from "react"
 
-export const Button = ({ variant = "primary", label, onClick }: ButtonProps) => {
-	return (
-		<>
-			<button onClick={onClick} data-variant={variant}>{label}</button>
-		</>
-	)
-}
+type Props = {
+  label: string
+} & React.ComponentPropsWithRef<"button">
+
+export const Button = forwardRef(({ label, ...props }: Props) => {
+  return (
+    <>
+      <button {...props}>{label}</button>
+    </>
+  )
+})

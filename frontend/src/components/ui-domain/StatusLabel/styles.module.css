@@ -1,0 +1,14 @@
+.module {
+  width: 60px; /* FIXME: 幅を数値で指定するのは良くないので修正する */
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.module[data-is-done="true"] {
+  background-color: green;
+}
+
+.module[data-is-done="false"] {
+  background-color: red;
+}
