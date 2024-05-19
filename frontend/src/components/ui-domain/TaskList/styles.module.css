@@ -1,0 +1,8 @@
+.module {
+  list-style: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
