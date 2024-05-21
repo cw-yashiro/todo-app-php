@@ -1,0 +1,34 @@
+.module {
+  /* 
+    reset css
+    ref: https://qiita.com/nabettu/items/1593af04e48444c45c53
+  */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 8px 13px;
+  appearance: none;
+
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.module:hover {
+  opacity: 0.9;
+}
+
+.module[data-variant="primary"] {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.module[data-variant="secondary"] {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.module[data-variant="danger"] {
+  background-color: #dc3545;
+  color: #fff;
+}
