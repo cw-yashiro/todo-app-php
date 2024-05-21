@@ -1,15 +1,5 @@
 .module {
-  /* 
-    reset css
-    ref: https://qiita.com/nabettu/items/1593af04e48444c45c53
-  */
-  background-color: transparent;
   border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 8px 13px;
-  appearance: none;
-
   padding: 5px 10px;
   border-radius: 5px;
 }
