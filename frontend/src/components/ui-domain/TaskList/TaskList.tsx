@@ -2,6 +2,7 @@ import { forwardRef } from "react"
 import { TextLabel } from "../TextLabel/TextLabel"
 import { Button } from "../Button/Button"
 import styles from "./styles.module.css"
+import { StatusLabel } from "../StatusLabel/StatusLabel"
 
 type Props = {
   label: string
@@ -11,7 +12,10 @@ type Props = {
 export const TaskList = forwardRef(({ label, isDone, ...props }: Props) => {
   return (
     <li {...props} className={styles.module}>
-      <TextLabel label={label} />
+      <div>
+        <StatusLabel isDone={isDone} />
+        <TextLabel label={label} />
+      </div>
       <div>
         {isDone ? (
           <Button label={"未完了に戻す"} />
