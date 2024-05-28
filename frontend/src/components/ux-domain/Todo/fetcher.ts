@@ -41,7 +41,17 @@ export const getTodo = async () => {
     .catch((err) => console.error(err))
 }
 
-export const createTodo = () => {}
+export const createTodo = async (name: string) => {
+  return await fetch(`${url}/todos`, {
+    method: "POST",
+    headers: defaultHeaders,
+    body: JSON.stringify({ name }),
+  })
+    .then(() => {
+      return getTodo()
+    })
+    .catch((err) => console.error(err))
+}
 
 export const updateTodo = () => {}
 
