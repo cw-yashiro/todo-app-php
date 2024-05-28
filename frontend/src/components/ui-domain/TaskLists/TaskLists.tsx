@@ -1,6 +1,7 @@
 import { forwardRef } from "react"
 import { TaskList } from "../TaskList/TaskList"
 import { Todo } from "../../../entity/Todo"
+import styles from "./styles.module.css"
 
 type Props = {
   todos: Array<Todo>
@@ -8,7 +9,7 @@ type Props = {
 
 export const TaskLists = forwardRef(({ todos, ...props }: Props) => {
   return (
-    <ul {...props}>
+    <ul className={styles.module} {...props}>
       {todos.map((todo: Todo, index: number) => {
         return (
           <TaskList
