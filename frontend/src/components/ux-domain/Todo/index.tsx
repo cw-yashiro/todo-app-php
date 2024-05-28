@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { TextArea } from "../../ui-domain/TextArea/TextArea"
 import { getTodo } from "./fetcher"
 import { Todo } from "../../../entity/Todo"
 import { TaskLists } from "../../ui-domain/TaskLists/TaskLists"
+import styles from "./styles.module.css"
+import { TaskInputArea } from "../../ui-domain/TaskInputArea/TaskInputArea"
 
 export const TodoPage = () => {
   const [todos, setTodos] = useState<Array<Todo>>([])
@@ -16,9 +17,17 @@ export const TodoPage = () => {
   }, [])
   return (
     <section>
-      <h1>Todo一覧</h1>
-      <TaskLists todos={todos} />
-      <TextArea />
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <h1>Todo一覧</h1>
+        </div>
+        <div className={styles.lists}>
+          <TaskLists todos={todos} />
+        </div>
+        <div className={styles.textarea}>
+          <TaskInputArea />
+        </div>
+      </div>
     </section>
   )
 }

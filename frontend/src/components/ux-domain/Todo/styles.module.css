@@ -1,0 +1,16 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 3rem;
+}
+
+.lists {
+  margin-top: 15px;
+}
+
+.textarea {
+  margin-top: 15px;
+}
