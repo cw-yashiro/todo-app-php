@@ -5,11 +5,12 @@ import styles from "./styles.module.css"
 
 type Props = {
   todos: Array<Todo>
+  updateTask: (taskId: number, name: string, isDone: boolean) => void
   deleteTask: (taskId: number) => void
 } & React.ComponentPropsWithRef<"ul">
 
 export const TaskLists = forwardRef(
-  ({ todos, deleteTask, ...props }: Props) => {
+  ({ todos, updateTask, deleteTask, ...props }: Props) => {
     return (
       <ul className={styles.module} {...props}>
         {todos.map((todo: Todo, index: number) => {
@@ -17,6 +18,7 @@ export const TaskLists = forwardRef(
             <TaskList
               todo={todo}
               key={`todo-list-item-${todo.id}-${index}`}
+              updateTask={updateTask}
               deleteTask={deleteTask}
             />
           )

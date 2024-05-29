@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getTodo, createTodo, deleteTodo } from "./fetcher"
+import { getTodo, createTodo, updateTodo, deleteTodo } from "./fetcher"
 import { Todo } from "../../../entity/Todo"
 import { TaskLists } from "../../ui-domain/TaskLists/TaskLists"
 import styles from "./styles.module.css"
@@ -32,6 +32,15 @@ export const TodoPage = () => {
       setTodos(data)
     })
 
+  const updateTask = (taskId: number, name: string, isDone: boolean) => {
+    updateTodo(taskId, name, isDone).then((data: Array<Todo> | void) => {
+      if (!data) {
+        return
+      }
+      setTodos(data)
+    })
+  }
+
   return (
     <section>
       <div className={styles.container}>
@@ -39,7 +48,11 @@ export const TodoPage = () => {
           <h1>Todo一覧</h1>
         </div>
         <div className={styles.lists}>
-          <TaskLists todos={todos} deleteTask={deleteTask} />
+          <TaskLists
+            todos={todos}
+            deleteTask={deleteTask}
+            updateTask={updateTask}
+          />
         </div>
         <div className={styles.textarea}>
           <TaskInputArea postTask={postTask} />

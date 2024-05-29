@@ -53,7 +53,21 @@ export const createTodo = async (name: string) => {
     .catch((err) => console.error(err))
 }
 
-export const updateTodo = () => {}
+export const updateTodo = async (
+  taskId: number,
+  name: string,
+  isDone: boolean
+) => {
+  return await fetch(`${url}/todos/${taskId}`, {
+    method: "PUT",
+    headers: defaultHeaders,
+    body: JSON.stringify({ name, is_done: isDone }),
+  })
+    .then(() => {
+      return getTodo()
+    })
+    .catch((err) => console.error(err))
+}
 
 export const deleteTodo = async (taskId: number) => {
   return await fetch(`${url}/todos/${taskId}`, {
