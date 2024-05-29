@@ -55,4 +55,13 @@ export const createTodo = async (name: string) => {
 
 export const updateTodo = () => {}
 
-export const deleteTodo = () => {}
+export const deleteTodo = async (taskId: number) => {
+  return await fetch(`${url}/todos/${taskId}`, {
+    method: "DELETE",
+    headers: defaultHeaders,
+  })
+    .then(() => {
+      return getTodo()
+    })
+    .catch((err) => console.error(err))
+}
