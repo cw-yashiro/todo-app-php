@@ -7,7 +7,12 @@ export default {
 
 export const Default = {
   args: {
-    label: "タスク",
-    isDone: true,
+    todo: {
+      id: 0,
+      name: "タスク",
+      isDone: true,
+      createdAt: "2024/09/15 22:33:44",
+      updatedAt: "2024/09/15 22:33:44",
+    },
   },
 }
