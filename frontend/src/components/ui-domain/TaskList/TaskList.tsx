@@ -17,21 +17,19 @@ export const TaskList = forwardRef(
       <li {...props} className={styles.module}>
         <div>
           <StatusLabel isDone={todo.isDone} />
-          <TextLabel label={todo.name} />
+          <TextLabel>{todo.name}</TextLabel>
         </div>
         <div>
           {todo.isDone ? (
-            <Button
-              label={"未完了に戻す"}
-              onClick={() => updateTask(todo.id, todo.name, false)}
-            />
+            <Button onClick={() => updateTask(todo.id, todo.name, false)}>
+              未完了に戻す
+            </Button>
           ) : (
-            <Button
-              label={"完了にする"}
-              onClick={() => updateTask(todo.id, todo.name, true)}
-            />
+            <Button onClick={() => updateTask(todo.id, todo.name, true)}>
+              完了にする
+            </Button>
           )}
-          <Button label={"削除"} onClick={() => deleteTask(todo.id)} />
+          <Button onClick={() => deleteTask(todo.id)}>削除</Button>
         </div>
       </li>
     )

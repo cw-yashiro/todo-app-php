@@ -1,9 +1,7 @@
 import { forwardRef } from "react"
 
-type Props = {
-  label: string
-} & React.ComponentPropsWithRef<"p">
+type Props = React.ComponentPropsWithRef<"label">
 
-export const TextLabel = forwardRef(({ label, ...props }: Props) => {
-  return <p {...props}>{label}</p>
+export const TextLabel = forwardRef(({ ...props }: Props) => {
+  return <label {...props} />
 })
