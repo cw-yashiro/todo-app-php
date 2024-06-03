@@ -9,7 +9,7 @@ type Props = {
 export const StatusLabel = forwardRef(({ isDone, ...props }: Props) => {
   return (
     <div {...props} className={styles.module} data-is-done={isDone}>
-      <TextLabel label={isDone ? "完了" : "未完了"} />
+      <TextLabel>{isDone ? "完了" : "未完了"}</TextLabel>
     </div>
   )
 })

@@ -17,7 +17,7 @@ export const TaskList = forwardRef(
       <li {...props} className={styles.module}>
         <div>
           <StatusLabel isDone={todo.isDone} />
-          <TextLabel label={todo.name} />
+          <TextLabel>{todo.name}</TextLabel>
         </div>
         <div>
           {todo.isDone ? (
