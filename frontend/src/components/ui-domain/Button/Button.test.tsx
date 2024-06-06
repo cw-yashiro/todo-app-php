@@ -12,4 +12,9 @@ describe("ui-domain/Button", () => {
     render(<Button disabled>ボタン</Button>)
     expect(screen.getByRole("button", { name: "ボタン" })).toBeDisabled()
   })
+
+  it("Snapshot: ボタンラベルが表示されている", () => {
+    const { container } = render(<Button>ボタンラベル</Button>)
+    expect(container).toMatchSnapshot()
+  })
 })
