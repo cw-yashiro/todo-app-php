@@ -32,7 +32,7 @@ export const TaskInputArea = ({ postTask }: Props) => {
   return (
     <div>
       <TextArea ref={formRef} />
-      <Button label="タスクを追加する" onClick={createTask} />
+      <Button onClick={createTask}>タスクを追加する</Button>
     </div>
   )
 }
