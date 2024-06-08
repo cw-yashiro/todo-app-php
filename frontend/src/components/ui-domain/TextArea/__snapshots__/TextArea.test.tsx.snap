@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ui-domain/TextArea > Snapshot: textareaが表示される 1`] = `
+<div>
+  <textarea
+    class="_module_0efe6a"
+    rows="3"
+  />
+</div>
+`;

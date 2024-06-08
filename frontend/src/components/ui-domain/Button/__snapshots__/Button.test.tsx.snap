@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ui-domain/Button > Snapshot: ボタンラベルが表示されている 1`] = `
+<div>
+  <button
+    class="_module_3e7089"
+    data-variant="primary"
+  >
+    ボタンラベル
+  </button>
+</div>
+`;
