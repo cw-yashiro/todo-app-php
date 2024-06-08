@@ -1,8 +1,4 @@
-# Laravel Tutorial Todo App
-
-## 成果物のURL
-
-[準備中]
+# Todo App
 
 ## これは何?
 PHPのLaravelを使用して作成したTodoアプリです。
