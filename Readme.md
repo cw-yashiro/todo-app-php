@@ -1,8 +1,4 @@
-# Laravel Tutorial Todo App
-
-## 成果物のURL
-
-[準備中]
+# Todo App
 
 ## これは何?
 PHPのLaravelを使用して作成したTodoアプリです。
@@ -10,13 +6,72 @@ PHPのLaravelを使用して作成したTodoアプリです。
 
 ## 目的
 
-- Laravelを使ったWebアプリケーションの作り方を理解するため
-- ORMの使い方を理解するため
-- PHPの文法を理解するため
+- PHPの文法を学習するため
+- Laravelでの開発方法を学ぶため
+- WebFrontendのテスト方法を学ぶため
 
 ## 動かし方
 
-[準備中]
+### コードのクローン
+
+```
+git clone https://github.com/cw-yashiro/todo-app-php.git
+```
+
+アプリのディレクトリに移動
+```
+cd todo-app-php
+```
+
+### バックエンド側のセットアップ
+
+backendディレクトリに移動
+```
+cd backend
+```
+
+dockerコンテナの立ち上げ
+```
+docker compose up -d
+```
+
+ポートがかぶると動かないので適宜ずらしてください
+
+### フロントエンド側のセットアップ
+
+Nodejs, yarnが必要です。
+
+frontendディレクトリに移動
+```
+cd ../frontend
+```
+
+依存パッケージのインストール
+```
+yarn
+```
+
+開発モードで起動
+```
+yarn dev
+```
+
+## Storybook
+
+コマンドを打つと勝手に起動してくれます
+
+```
+yarn storybook
+```
+
+## テスト
+
+現状ではフロントエンド側のみにテストを実装しています
+
+テストの実行
+```
+yarn test
+```
 
 ## Snapshotテストについて
 
@@ -28,32 +83,37 @@ npx vitest -u
 
 ## 仕様
 
-### エンドポイント(暫定)
+### エンドポイント
 
-#### GET `/`
+#### GET `/todos`
 タスク一覧を取得する
 
-#### POST `/task`
+#### POST `/todos`
 タスクを追加する
 
-#### DELETE `/?task_id=xxxx`
+#### DELETE `/{task_id}`
 タスクidがxxxxのタスクを削除する
 
-#### UPDATE `/?task_id=xxxx`
+#### UPDATE `/{task_id}`
 タスクidがxxxxのタスクを更新する
 
 ### DBテーブルの構成
 
 todoテーブル
 
-|id|name|is_done|created_at|updated_at|
-|--|----|-------|----------|----------|
-|Primary key, Auto increment|varchar(256)|varchar(2)|datetime|datetime|
+```
+mysql> desc todos;
++------------+---------------------+------+-----+---------+----------------+
+| Field      | Type                | Null | Key | Default | Extra          |
++------------+---------------------+------+-----+---------+----------------+
+| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| name       | char(255)           | NO   |     | NULL    |                |
+| is_done    | tinyint(1)          | NO   |     | NULL    |                |
+| created_at | timestamp           | YES  |     | NULL    |                |
+| updated_at | timestamp           | YES  |     | NULL    |                |
++------------+---------------------+------+-----+---------+----------------+
+```
 
 ### 各種画面
 
-[準備中]
-
-## 参考にしたサイトや文献
-
-[準備中]
+<img src="https://raw.githubusercontent.com/cw-yashiro/todo-app-php/10e10614e14673b67543aabcacfcf4bd99f2eb5b/docs/image/todo-page.png" width="700">
