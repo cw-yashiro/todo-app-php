@@ -12,7 +12,58 @@ PHPのLaravelを使用して作成したTodoアプリです。
 
 ## 動かし方
 
-[準備中]
+### コードのクローン
+
+```
+git clone https://github.com/cw-yashiro/todo-app-php.git
+```
+
+アプリのディレクトリに移動
+```
+cd todo-app-php
+```
+
+### バックエンド側のセットアップ
+
+backendディレクトリに移動
+```
+cd backend
+```
+
+dockerコンテナの立ち上げ
+```
+docker compose up -d
+```
+
+ポートがかぶると動かないので適宜ずらしてください
+
+### フロントエンド側のセットアップ
+
+Nodejs, yarnが必要です。
+
+frontendディレクトリに移動
+```
+cd ../frontend
+```
+
+依存パッケージのインストール
+```
+yarn
+```
+
+開発モードで起動
+```
+yarn dev
+```
+
+## テスト
+
+現状ではフロントエンド側のみにテストを実装しています
+
+テストの実行
+```
+yarn test
+```
 
 ## Snapshotテストについて
 
