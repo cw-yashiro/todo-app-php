@@ -27,8 +27,22 @@ const setup = () => {
 
 describe("ui-domain/TaskLists", () => {
   const { todos } = setup()
+  let updateTask = () => {}
+  let deleteTask = () => {}
+
+  beforeEach(() => {
+    updateTask = vi.fn()
+    deleteTask = vi.fn()
+  })
+
   it("[role='list']", () => {
-    render(<TaskLists todos={todos} />)
+    render(
+      <TaskLists
+        todos={todos}
+        updateTask={updateTask}
+        deleteTask={deleteTask}
+      />
+    )
     expect(screen.getByRole("list")).toBeInTheDocument()
     expect(screen.getByText("タスク1")).toBeTruthy()
   })

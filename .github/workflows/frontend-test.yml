@@ -1,9 +1,6 @@
 name: frontend-test
 
-on:
-  push:
-    paths:
-      - 'frontend/**'
+on: push
 
 jobs:
   build:
@@ -14,6 +11,8 @@ jobs:
         with:
           node-version: '20.x'
       - name: Install dependencies
+        working-directory: './frontend'
         run: yarn
       - name: Vitest unit test
+        working-directory: './frontend'
         run: yarn test
