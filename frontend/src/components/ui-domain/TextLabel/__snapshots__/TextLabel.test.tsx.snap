@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ui-domain/TextLabel > Snapshot: テキストラベルが表示されている 1`] = `
+<div>
+  <label>
+    テキストラベル
+  </label>
+</div>
+`;
