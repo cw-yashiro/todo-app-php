@@ -3,7 +3,7 @@ name: frontend-test
 on:
   push:
     paths:
-      - './frontend/**'
+      - 'frontend/**'
 
 jobs:
   build:
