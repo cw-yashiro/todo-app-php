@@ -101,9 +101,18 @@ npx vitest -u
 
 todoテーブル
 
-|id|name|is_done|created_at|updated_at|
-|--|----|-------|----------|----------|
-|Primary key, Auto increment|varchar(256)|varchar(2)|datetime|datetime|
+```
+mysql> desc todos;
++------------+---------------------+------+-----+---------+----------------+
+| Field      | Type                | Null | Key | Default | Extra          |
++------------+---------------------+------+-----+---------+----------------+
+| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| name       | char(255)           | NO   |     | NULL    |                |
+| is_done    | tinyint(1)          | NO   |     | NULL    |                |
+| created_at | timestamp           | YES  |     | NULL    |                |
+| updated_at | timestamp           | YES  |     | NULL    |                |
++------------+---------------------+------+-----+---------+----------------+
+```
 
 ### 各種画面
 
