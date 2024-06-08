@@ -1,9 +1,6 @@
 name: frontend-test
 
-on:
-  push:
-    paths:
-      - 'frontend/**'
+on: push
 
 jobs:
   build:
