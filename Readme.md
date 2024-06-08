@@ -116,8 +116,4 @@ mysql> desc todos;
 
 ### 各種画面
 
-[準備中]
-
-## 参考にしたサイトや文献
-
-[準備中]
+<img src="https://raw.githubusercontent.com/cw-yashiro/todo-app-php/10e10614e14673b67543aabcacfcf4bd99f2eb5b/docs/image/todo-page.png" width="700">
