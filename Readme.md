@@ -75,18 +75,18 @@ npx vitest -u
 
 ## 仕様
 
-### エンドポイント(暫定)
+### エンドポイント
 
-#### GET `/`
+#### GET `/todos`
 タスク一覧を取得する
 
-#### POST `/task`
+#### POST `/todos`
 タスクを追加する
 
-#### DELETE `/?task_id=xxxx`
+#### DELETE `/{task_id}`
 タスクidがxxxxのタスクを削除する
 
-#### UPDATE `/?task_id=xxxx`
+#### UPDATE `/{task_id}`
 タスクidがxxxxのタスクを更新する
 
 ### DBテーブルの構成
