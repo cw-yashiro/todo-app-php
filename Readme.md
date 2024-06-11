@@ -73,6 +73,54 @@ yarn storybook
 yarn test
 ```
 
+テストカバレッジの出力
+
+```
+yarn coverage
+```
+
+カバレッジ出力の例
+
+```
+ % Coverage report from istanbul
+----------------------------------------|---------|----------|---------|---------|-------------------
+File                                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------------------|---------|----------|---------|---------|-------------------
+All files                               |   35.22 |       60 |   30.76 |   35.22 |                   
+ src                                    |       0 |      100 |       0 |       0 |                   
+  App.tsx                               |       0 |      100 |       0 |       0 | 5                 
+  main.tsx                              |       0 |      100 |     100 |       0 | 7                 
+ src/components/ui-domain/Button        |   66.66 |      100 |      50 |   66.66 |                   
+  Button.stories.ts                     |       0 |      100 |       0 |       0 | 8                 
+  Button.tsx                            |     100 |      100 |     100 |     100 |                   
+ src/components/ui-domain/StatusLabel   |   66.66 |      100 |     100 |   66.66 |                   
+  StatusLabel.stories.ts                |       0 |      100 |     100 |       0 | 8                 
+  StatusLabel.tsx                       |     100 |      100 |     100 |     100 |                   
+ src/components/ui-domain/TaskInputArea |   84.21 |    83.33 |     100 |   84.21 |                   
+  TaskInputArea.stories.ts              |       0 |      100 |     100 |       0 | 8                 
+  TaskInputArea.tsx                     |   88.88 |    83.33 |     100 |   88.88 | 14,28             
+ src/components/ui-domain/TaskList      |   66.66 |      100 |      75 |   66.66 |                   
+  ListItem.stories.ts                   |       0 |      100 |     100 |       0 | 8                 
+  TaskList.tsx                          |      80 |      100 |      75 |      80 | 28                
+ src/components/ui-domain/TaskLists     |      75 |      100 |     100 |      75 |                   
+  TaskLists.stories.ts                  |       0 |      100 |     100 |       0 | 8                 
+  TaskLists.tsx                         |     100 |      100 |     100 |     100 |                   
+ src/components/ui-domain/TextArea      |   66.66 |      100 |     100 |   66.66 |                   
+  TextArea.stories.ts                   |       0 |      100 |     100 |       0 | 8                 
+  TextArea.tsx                          |     100 |      100 |     100 |     100 |                   
+ src/components/ui-domain/TextLabel     |   66.66 |      100 |     100 |   66.66 |                   
+  TextLabel.stories.ts                  |       0 |      100 |     100 |       0 | 8                 
+  TextLabel.tsx                         |     100 |      100 |     100 |     100 |                   
+ src/components/ux-domain/Todo          |       0 |        0 |       0 |       0 |                   
+  fetcher.ts                            |       0 |      100 |       0 |       0 | 4-80              
+  index.tsx                             |       0 |        0 |       0 |       0 | 8-44              
+----------------------------------------|---------|----------|---------|---------|-------------------
+```
+
+`frontend/coverage`ディレクトリにテストカバレッジのhtmlが出力される
+
+<img src="https://raw.githubusercontent.com/cw-yashiro/todo-app-php/6745d36564d025fe8d2eec9481ef15026231ff2c/docs/image/frontend-test-coverage-html.png" width="700">
+
 ## Snapshotテストについて
 
 スナップショットの更新は以下のコマンドか`watch`モード中に`u`を押下する。
