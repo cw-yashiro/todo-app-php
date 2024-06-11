@@ -129,6 +129,35 @@ All files                               |   35.22 |       60 |   30.76 |   35.22
 npx vitest -u
 ```
 
+## VRTのついて
+
+storycapを使用したVRTを実行できます
+
+1. storybookのビルド
+```
+yarn build-storybook
+```
+storybook-staticディレクトリが生成されます
+
+2. storycapでスクショを取得する
+```
+yarn storycap
+```
+
+3. スクショのディレクトリ名変更
+
+※すでにactualディレクトリがある場合は削除してください
+```
+mv __screenshots__ actual
+```
+
+4. reg-suitの実行
+```
+npx reg-cli actual expected diff -R diff/index.html
+```
+
+`actual`と`expeced`にあるスクショを比較します
+
 ## 仕様
 
 ### エンドポイント
