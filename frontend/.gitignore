@@ -25,5 +25,10 @@ dist-ssr
 
 *storybook.log
 
+# Local VRT
+storybook-static
+diff
+actual
+
 # Test Coverage
 coverage
