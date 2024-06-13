@@ -19,9 +19,10 @@ jobs:
         uses: actions/cache@v3
         id: node_modules_cache
         with:
-          path: node_modules
+          path: ./frontend/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        working-directory: './frontend'
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: yarn
   build-storybook:
@@ -36,15 +37,16 @@ jobs:
         id: node_modules_cache
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: ./frontend/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Cache Storybook
         uses: actions/cache@v3
         id: storybook_cache
         with:
-          path: storybook-static
+          path: ./frontend/storybook-static
           key: ${{ runner.os }}-${{ github.sha }}
       - name: Build Storybook
+        working-directory: './frontend'
         if: steps.storybook_cache.outputs.cache-hit != 'true'
         run: yarn build-storybook --quiet
   vrt-storybook:
@@ -61,13 +63,13 @@ jobs:
         id: node_modules_cache
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: ./frontend/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Restore Storybook
         id: storybook_cache
         uses: actions/cache@v3
         with:
-          path: storybook-static
+          path: ./frontend/storybook-static
           key: ${{ runner.os }}-${{ github.sha }}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@master
@@ -76,8 +78,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
       - name: Install Fonts
+        working-directory: './frontend'
         run: sudo apt-get install fonts-ipafont-gothic fonts-ipafont-mincho
       - name: Run Storycap
+        working-directory: './frontend'
         run: yarn vrt:snapshot
       - name: Run reg-suit
+        working-directory: './frontend'
         run: yarn vrt:run
