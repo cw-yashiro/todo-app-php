@@ -1,0 +1,88 @@
+# ref: https://github.com/cw-yashiro/nextjs/blob/main/.github/workflows/test.ui.yaml
+
+name: frontend-vrt
+
+on: push
+env:
+  REG_NOTIFY_CLIENT_ID: ${{ secrets.REG_NOTIFY_CLIENT_ID }}
+  AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: node_modules_cache
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        working-directory: './frontend'
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: yarn
+  build-storybook:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Restore node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache Storybook
+        uses: actions/cache@v3
+        id: storybook_cache
+        with:
+          path: ./frontend/storybook-static
+          key: ${{ runner.os }}-${{ github.sha }}
+      - name: Build Storybook
+        working-directory: './frontend'
+        if: steps.storybook_cache.outputs.cache-hit != 'true'
+        run: yarn build-storybook --quiet
+  vrt-storybook:
+    needs: build-storybook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # この指定がないと比較に失敗する
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Restore node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore Storybook
+        id: storybook_cache
+        uses: actions/cache@v3
+        with:
+          path: ./frontend/storybook-static
+          key: ${{ runner.os }}-${{ github.sha }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - name: Install Fonts
+        working-directory: './frontend'
+        run: sudo apt-get install fonts-ipafont-gothic fonts-ipafont-mincho
+      - name: Run Storycap
+        working-directory: './frontend'
+        run: yarn vrt:snapshot
+      - name: Run reg-suit
+        working-directory: './frontend'
+        run: yarn vrt:run
