@@ -32,4 +32,9 @@ actual
 
 # Test Coverage
 coverage
+
 .reg
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
